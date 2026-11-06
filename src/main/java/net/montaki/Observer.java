@@ -1,4 +1,5 @@
 package net.montaki;
 
-public class Observer {
+public interface Observer {
+    void update(int newState);
 }
