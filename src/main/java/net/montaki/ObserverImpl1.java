@@ -2,11 +2,14 @@ package net.montaki;
 
 public class ObserverImpl1 implements Observer {
     @Override
-    public void update(int newState) {
+    public void update(Observable observable) {
 
-        System.out.println("Observer Impl1");
-        System.out.println("=====================================");
-        System.out.println("New state: " + newState);
-        System.out.println("=====================================");
+        if (observable instanceof ObservableImpl obs){
+
+            System.out.println("Observer Impl 1");
+            System.out.println("New state: " + obs.getState());
+            System.out.println("=====================================================");
+
+        }
     }
 }
