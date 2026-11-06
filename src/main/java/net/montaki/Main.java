@@ -4,14 +4,24 @@ package net.montaki;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        ObservableImpl observable = new ObservableImpl();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        Observer o1 = new ObserverImpl1();
+        Observer o2 = new ObserverImpl2();
+
+        observable.subscribe(o1);
+        observable.subscribe(o2);
+
+        observable.subscribe(newState -> {
+            System.out.println("Observer Impl 3");
+            System.out.println("Some calculation: " + newState + Math.random()*100);
+            System.out.println("=====================================================");
+        });
+
+        observable.setState(60);
+        observable.setState(70);
+        observable.setState(80);
+        observable.setState(80);
+
     }
 }

@@ -14,6 +14,10 @@ public class ObserverImpl2 implements Observer {
             sum +=  history.get(i);
         }
 
+        System.out.println("Observer Impl1");
+
         System.out.println("The average is: " + sum/i);
+        System.out.println("=====================================");
+
     }
 }
